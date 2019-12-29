@@ -1,0 +1,186 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: "Basic Account Budget Alerts"
+
+Parameters:
+
+  EmailAddress:
+    Type: String
+    Description: "Enter email address to receive billing alerts (mailing list preferred)."
+    AllowedPattern: ^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$
+
+  EnvironmentName:
+    Type: String
+    AllowedValues:
+      - dev
+      - staging
+      - production
+
+  Conditions:
+    ShouldForecast: !Equals [!Ref EnvironemntName, dev]
+
+Resources:
+  5USDBudget:
+    Type: "AWS::Budgets::Budget"
+    Condition: ShouldForecast
+    Properties:
+      Budget:
+        BudgetLimit:
+          Amount: 5
+          Unit: USD
+        TimeUnit: MONTHLY
+        BudgetType: COST
+      NotificationsWithSubscribers:
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: GREATER_THAN
+            Threshold: 75
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: EQUAL_TO
+            Threshold: 100
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+        - Notification:
+            NotificationType: FORECASTED
+            ComparisonOperator: GREATER_THAN
+            Threshold: 100
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+
+  10USDBudget:
+    Type: "AWS::Budgets::Budget"
+    Properties:
+      Budget:
+        BudgetLimit:
+          Amount: 10
+          Unit: USD
+        TimeUnit: MONTHLY
+        BudgetType: COST
+      NotificationsWithSubscribers:
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: GREATER_THAN
+            Threshold: 75
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: EQUAL_TO
+            Threshold: 100
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+        - Notification:
+            NotificationType: FORECASTED
+            ComparisonOperator: GREATER_THAN
+            Threshold: 100
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+
+  25USDBudget:
+    Type: "AWS::Budgets::Budget"
+    Properties:
+      Budget:
+        BudgetLimit:
+          Amount: 25
+          Unit: USD
+        TimeUnit: MONTHLY
+        BudgetType: COST
+      NotificationsWithSubscribers:
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: GREATER_THAN
+            Threshold: 75
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: EQUAL_TO
+            Threshold: 100
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+        - Notification:
+            NotificationType: FORECASTED
+            ComparisonOperator: GREATER_THAN
+            Threshold: 100
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+
+  50USDBudget:
+    Type: "AWS::Budgets::Budget"
+    Properties:
+      Budget:
+        BudgetLimit:
+          Amount: 50
+          Unit: USD
+        TimeUnit: MONTHLY
+        BudgetType: COST
+      NotificationsWithSubscribers:
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: GREATER_THAN
+            Threshold: 75
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: EQUAL_TO
+            Threshold: 100
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+        - Notification:
+            NotificationType: FORECASTED
+            ComparisonOperator: GREATER_THAN
+            Threshold: 100
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+
+  100USDBudget:
+    Type: "AWS::Budgets::Budget"
+    Properties:
+      Budget:
+        BudgetLimit:
+          Amount: 100
+          Unit: USD
+        TimeUnit: MONTHLY
+        BudgetType: COST
+      NotificationsWithSubscribers:
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: GREATER_THAN
+            Threshold: 75
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: EQUAL_TO
+            Threshold: 100
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+        - Notification:
+            NotificationType: FORECASTED
+            ComparisonOperator: GREATER_THAN
+            Threshold: 100
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailAddress
+
+Outputs:
+  BudgetId:
+    Value: Basic-Alerts
