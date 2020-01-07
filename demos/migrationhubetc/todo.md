@@ -42,7 +42,7 @@ sudo python ./installer_linux.py -t F330-BF5A-43D6-3AB3-8A13-3D0A-82FC-B237-A5A3
 ***
 
 #PreReqs
--k AKIAQUM5QO57XP6SQF7Z -s SAwpq4BB3t8o+b9H+6AHcK3UEzdHKXANeMVLhMTi
+-k  -s
 
 Set Home region in Migration Hub
 Set
@@ -63,14 +63,13 @@ sudo bash install -r us-west-2 -k <AWS key ID> -s <AWS key secret>
 
 ### CloudEndure
 Your Agent Installation Token:
-414E-62D5-D9FE-3FC5-FDFE-96EA-C969-4C5F-D00A-D366-6F6D-584A-8B43-A390-7FD9-1A63
 
 For Linux machines
 Download the CloudEndure Agent Installer for Linux:
 wget -O ./installer_linux.py https://console.cloudendure.com/installer_linux.py
 
 Then run the Installer and follow the instructions:
-sudo python ./installer_linux.py -t 414E-62D5-D9FE-3FC5-FDFE-96EA-C969-4C5F-D00A-D366-6F6D-584A-8B43-A390-7FD9-1A63 --no-prompt
+sudo python ./installer_linux.py -t  --no-prompt
 
 
 
@@ -100,6 +99,6 @@ Create an IAM user in the IAM console and attach the existing AWSApplicationDisc
 
 For Windows machines
 Download the Agent Installer for Windows, then launch using this command:
-installer_win.exe -t 414E-62D5-D9FE-3FC5-FDFE-96EA-C969-4C5F-D00A-D366-6F6D-584A-8B43-A390-7FD9-1A63 --no-prompt
+installer_win.exe -t  --no-prompt
 
 ***
