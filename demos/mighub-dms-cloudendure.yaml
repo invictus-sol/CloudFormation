@@ -1,7 +1,7 @@
 
 AWSTemplateFormatVersion: 2010-09-09
 
-# Copyright 2019 - sol@blackshieldempire.com
+# Copyright 2019 - ksol@amazon.com
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,3 +14,49 @@ AWSTemplateFormatVersion: 2010-09-09
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+
+
+
+Resources:
+    MySQLEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-east-1a
+      InstanceType: String
+      ImageId: "ami-79fd7eee"
+      KeyName: "testkey"
+      SecurityGroupIds:
+        - String
+      SecurityGroups:
+        - String
+
+    MyWindowsEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-east-1a
+      InstanceType: String
+      ImageId: "ami-79fd7eee"
+      KeyName: "testkey"
+      SecurityGroupIds:
+        - String
+      SecurityGroups:
+        - String
+
+
+    DBSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security Group for MySQL Server in us-east-1a
+      GroupName: GeneralSG
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: *
+          ToPort: *
+          CidrIP: 0.0.0.0/0
+      SecurityGroupIngress: 
+        - IpProtocol: tcp
+          FromPort: *
+          ToPort: *
+          CidrIP: 0.0.0.0/0
+      VpcId: vpc-badf8ac0
