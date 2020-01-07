@@ -37,7 +37,7 @@ tar -xzf aws-discovery-agent.tar.gz
 sudo bash install -r us-west-2 -k <AWS key ID> -s <AWS key secret> #Can variableize? Paramter Store?
 
 wget -O ./installer_linux.py https://console.cloudendure.com/installer_linux.py
-sudo python ./installer_linux.py -t F330-BF5A-43D6-3AB3-8A13-3D0A-82FC-B237-A5A3-45FB-74E2-48EF-91D5-A0F7-545A-9537 --no-prompt
+sudo python ./installer_linux.py -t  --no-prompt
 
 ***
 
