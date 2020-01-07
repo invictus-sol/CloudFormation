@@ -54,7 +54,7 @@ Resources:
           FromPort: *
           ToPort: *
           CidrIP: 0.0.0.0/0
-      SecurityGroupIngress: 
+      SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: *
           ToPort: *
