@@ -22,33 +22,29 @@ Resources:
     MySQLEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      AvailabilityZone: us-east-1a
-      InstanceType: String
-      ImageId: "ami-79fd7eee"
-      KeyName: "testkey"
-      SecurityGroupIds:
-        - String
+      AvailabilityZone: us-west-2b
+      InstanceType: t2.micro
+      ImageId: "ami-0c5204531f799e0c6"
+      KeyName: "demo-mh-ads-ce-cloudformation"
       SecurityGroups:
-        - String
+        - !Ref SSHSecurityGroup
+        - !Ref MYSQLSecurityGroup
 
     MyWindowsEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      AvailabilityZone: us-east-1a
-      InstanceType: String
-      ImageId: "ami-79fd7eee"
-      KeyName: "testkey"
-      SecurityGroupIds:
-        - String
+      AvailabilityZone: us-west-2b
+      InstanceType: t2.micro
+      ImageId: "ami-0f3f4855746899521"
+      KeyName: "demo-mh-ads-ce-cloudformation"
       SecurityGroups:
-        - String
+        - !Ref RDP
 
-
-    DBSecurityGroup:
+    MYSQLSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: Security Group for MySQL Server in us-east-1a
-      GroupName: GeneralSG
+      GroupName: MYSQLSecurityGroup
       SecurityGroupEgress:
         - IpProtocol: tcp
           FromPort: *
@@ -57,6 +53,57 @@ Resources:
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: *
+          ToPort: 3306
+          CidrIP: 0.0.0.0/0
+      VpcId: !Ref xxx
+
+    HTTPSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security Group for HTTP in us-west-2b
+      GroupName: SSHSecurityGroup
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: *
           ToPort: *
           CidrIP: 0.0.0.0/0
-      VpcId: vpc-badf8ac0
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: *
+          ToPort: 80
+          CidrIP: 0.0.0.0/0
+      VpcId: !Ref VPC
+
+    SSHSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security Group for SSH in us-west-2b
+      GroupName: SSHSecurityGroup
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: *
+          ToPort: *
+          CidrIP: 0.0.0.0/0
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: *
+          ToPort: 22
+          CidrIP: 0.0.0.0/0
+      VpcId: !Ref VPC
+
+    RDPSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security Group for Windows RDP Server in us-west-2b
+      GroupName: RDPSecurityGroup
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: *
+          ToPort: *
+          CidrIP: 0.0.0.0/0
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: *
+          ToPort: 3389
+          CidrIP: 0.0.0.0/0
+      VpcId: !Ref Vpc
