@@ -27,8 +27,8 @@ sudo systemctl enable mariadb
 curl -l https://codeload.github.com/datacharmer/test_db/legacy.zip/master --output db.zip
 unzip db.zip
 cd *test_db*
-mysql --user=root --password=secret < employees.sql
-mysql --user=root --password=secret -t < test_employees_md5.sql
+mysql --user=root --password= < employees.sql
+mysql --user=root --password= -t < test_employees_md5.sql
 
 cd ..
 
