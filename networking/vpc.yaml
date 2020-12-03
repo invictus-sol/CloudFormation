@@ -20,6 +20,21 @@ Description:  This template deploys a VPC, with a pair of public and private sub
   route on the public subnets. It conditionally deploys a pair of NAT gateways (one in each AZ),
   and default routes for them in the private subnets.
 
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      -  
+        Label:
+          default: "Network Configuration"
+        EnvironmentName:
+          default "Main VPC"
+        Parameters:
+          - VpcCIDR
+          - PublicSubnet1CIDR
+          - PublicSubnet2CIDR
+          - PrivateSubnet1CIDR
+          - PrivateSubnet2CIDR
+
 Parameters:
   EnvironmentName:
     Description: An environment name that is prefixed to resource names
