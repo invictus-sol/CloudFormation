@@ -29,11 +29,14 @@ Metadata:
         EnvironmentName:
           default "Main VPC"
         Parameters:
+          - VpcID
           - VpcCIDR
           - PublicSubnet1CIDR
           - PublicSubnet2CIDR
           - PrivateSubnet1CIDR
           - PrivateSubnet2CIDR
+    ParameterLabels:
+        VpcID : "Please choose a name for your VPC"
 
 Parameters:
   EnvironmentName:
