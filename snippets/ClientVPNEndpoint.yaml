@@ -1,0 +1,22 @@
+Type: AWS::EC2::ClientVpnEndpoint
+Properties: 
+  AuthenticationOptions: 
+    - ClientAuthenticationRequest
+  ClientCidrBlock: String
+  ClientConnectOptions: 
+    ClientConnectOptions
+  ConnectionLogOptions: 
+    ConnectionLogOptions
+  Description: String
+  DnsServers: 
+    - String
+  SecurityGroupIds: 
+    - String
+  SelfServicePortal: String
+  ServerCertificateArn: String
+  SplitTunnel: Boolean
+  TagSpecifications: 
+    - TagSpecification
+  TransportProtocol: String
+  VpcId: String
+  VpnPort: Integer
