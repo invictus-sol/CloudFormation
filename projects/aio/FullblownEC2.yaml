@@ -39,7 +39,7 @@ Resources:
       InstanceType: !FindInMap [Env-InstanceType, !Ref 'Env-Name', instanceType]
       ImageId: !FindInMap [Region-ArchAMI, !Ref 'AWS::Region', HVM64]
       AvailabilityZone: !Sub ${AWS::Region}a
-      SecurityGroupIds: XXXXXXX
+      SecurityGroupIds: !Ref SSHSecurityGroup
       SubnetId: 
       Tags:
         -
