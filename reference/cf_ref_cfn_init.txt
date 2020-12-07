@@ -1,0 +1,13 @@
+
+
+    cfn-init: Use to retrieve and interpret resource metadata, install packages, create files, and start services.
+    https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-init.html
+
+    cfn-signal: Use to signal with a CreationPolicy or WaitCondition, so you can synchronize other resources in the stack when the prerequisite resource or application is ready.
+    https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-signal.html
+
+    cfn-get-metadata: Use to retrieve metadata for a resource or path to a specific key.
+    https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-get-metadata.html
+
+    cfn-hup: Use to check for updates to metadata and execute custom hooks when changes are detected.
+    https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-hup.html
