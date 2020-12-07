@@ -1,0 +1,10 @@
+Type: AWS::DirectoryService::MicrosoftAD
+Properties: 
+  CreateAlias: true
+  Edition: String
+  EnableSso: Boolean
+  Name: String
+  Password: String
+  ShortName: String
+  VpcSettings: 
+    VpcSettings

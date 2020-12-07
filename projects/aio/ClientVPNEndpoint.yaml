@@ -1,0 +1,20 @@
+Type: AWS::EC2::ClientVpnEndpoint
+Properties: 
+  AuthenticationOptions: 
+    - ClientAuthenticationRequest
+  ClientCidrBlock: "192.168.1.0/22"
+  ClientConnectOptions: 
+    ClientConnectOptions
+  ConnectionLogOptions: 
+    Enabled: "false"
+  Description: "AD"
+  DnsServers: 
+    - "192.168.1.7"
+  SelfServicePortal: enabled
+  ServerCertificateArn: String
+  SplitTunnel: Boolean
+  TagSpecifications: 
+    - TagSpecification
+  TransportProtocol: String
+  VpcId: String
+  VpnPort: Integer
