@@ -9,20 +9,10 @@ Parameters:
     Description: "Enter email address to receive billing alerts (mailing list preferred)."
     AllowedPattern: ^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$
 
-  EnvironmentName:
-    Type: String
-    AllowedValues:
-      - dev
-      - staging
-      - production
-
-  Conditions:
-    ShouldForecast: !Equals [!Ref EnvironemntName, dev]
 
 Resources:
   5USDBudget:
     Type: "AWS::Budgets::Budget"
-    Condition: ShouldForecast
     Properties:
       Budget:
         BudgetLimit:
@@ -53,6 +43,7 @@ Resources:
             - SubscriptionType: EMAIL
               Address: !Ref EmailAddress
 
+
   10USDBudget:
     Type: "AWS::Budgets::Budget"
     Properties:
@@ -76,7 +67,7 @@ Resources:
             Threshold: 100
           Subscribers:
             - SubscriptionType: EMAIL
-              Address: !Ref EmailAddress
+              Address: !Ref EmailAddress            
         - Notification:
             NotificationType: FORECASTED
             ComparisonOperator: GREATER_THAN
@@ -84,6 +75,7 @@ Resources:
           Subscribers:
             - SubscriptionType: EMAIL
               Address: !Ref EmailAddress
+
 
   25USDBudget:
     Type: "AWS::Budgets::Budget"
@@ -117,6 +109,7 @@ Resources:
             - SubscriptionType: EMAIL
               Address: !Ref EmailAddress
 
+
   50USDBudget:
     Type: "AWS::Budgets::Budget"
     Properties:
@@ -149,6 +142,7 @@ Resources:
             - SubscriptionType: EMAIL
               Address: !Ref EmailAddress
 
+
   100USDBudget:
     Type: "AWS::Budgets::Budget"
     Properties:
@@ -166,6 +160,7 @@ Resources:
           Subscribers:
             - SubscriptionType: EMAIL
               Address: !Ref EmailAddress
+
         - Notification:
             NotificationType: ACTUAL
             ComparisonOperator: EQUAL_TO
